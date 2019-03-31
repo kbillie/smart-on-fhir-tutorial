@@ -21,9 +21,14 @@
                       }
                     }
                   });
-
+        var diag = smart.patient.api.read({type: 'DiagnosticReport'});
+        $.when(pt, diag).fail(onError);
+        
+        $.when(pt, diag).done(function(pt, diag) {
+          console.log(diag);
+         }
+        
         $.when(pt, obv).fail(onError);
-        console.log(obv);
         $.when(pt, obv).done(function(patient, obv) {
           console.log("This is in the done function");
           console.log(obv);
@@ -129,7 +134,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    console.log("edit 2");
+    console.log("edit 3");
   };
 
 })(window);
