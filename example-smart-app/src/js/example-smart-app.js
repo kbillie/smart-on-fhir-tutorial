@@ -26,6 +26,8 @@
         console.log(obv);
         $.when(pt, obv).done(function(patient, obv) {
           console.log("This is in the done function");
+          console.log(obv);
+
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
