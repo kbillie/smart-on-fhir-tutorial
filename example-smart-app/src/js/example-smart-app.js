@@ -26,7 +26,7 @@
         
         $.when(pt, diag).done(function(pt, diag) {
           console.log(diag);
-         }
+         });
         
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
