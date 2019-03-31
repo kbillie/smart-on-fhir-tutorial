@@ -21,7 +21,8 @@
                       }
                     }
                   });
-        var diag = smart.patient.api.read({type: 'DiagnosticReport'});
+        var diag = smart.patient.api.fetchAll({type: 'DiagnosticReport'});
+        
         $.when(pt, diag).fail(onError);
         
         $.when(pt, diag).done(function(pt, diag) {
@@ -134,7 +135,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    console.log("edit 3");
+    console.log("edit 4");
   };
 
 })(window);
