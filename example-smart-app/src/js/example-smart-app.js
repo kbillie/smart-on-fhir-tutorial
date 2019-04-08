@@ -21,6 +21,7 @@
                       }
                     }
                   });
+        #gets the diagnostic report data
         var diag = smart.patient.api.fetchAll({type: 'DiagnosticReport'});
         
         $.when(pt, diag).fail(onError);
@@ -31,8 +32,7 @@
         
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
-          console.log("This is in the done function");
-          console.log(obv);
+          
 
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
@@ -135,7 +135,6 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    console.log("edit 4");
   };
 
 })(window);
