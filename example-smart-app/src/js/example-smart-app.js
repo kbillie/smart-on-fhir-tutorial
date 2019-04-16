@@ -21,7 +21,7 @@
                       }
                     }
                   });
-        #gets the diagnostic report data
+        //gets the diagnostic report data
         var diag = smart.patient.api.fetchAll({type: 'DiagnosticReport'});
         
         $.when(pt, diag).fail(onError);
