@@ -29,7 +29,7 @@
         $.when(pt, diag).done(function(pt, diag) {
           console.log(diag);
           console.log(diag[0]);
-          console.log(diag[0].code);
+          console.log(diag[0].code.text);
           console.log(diag[0].effectiveDateTime);
          });
         
