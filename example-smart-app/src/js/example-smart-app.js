@@ -32,25 +32,29 @@
 
         
         $.when(pt, diag).done(function(pt, diag) {
-          console.log(diag);
-          console.log(diag[0]);
-          console.log(diag[0].code.text);
-          console.log(diag[0].effectiveDateTime);
-          FHIR.oauth2.ready(onReady, onError);
-          return ret.promise();
+          if (diag.length != 0) {
+            console.log(diag);
+            console.log(diag[0]);
+            console.log(diag[0].code.text);
+            console.log(diag[0].effectiveDateTime);
+            FHIR.oauth2.ready(onReady, onError);
+            return ret.promise();
+          }
          });
         
-        $.when(pt, procr).done(function(pt, diag) {
-          console.log(procr);
-          console.log(procr[0]);
-          console.log(procr[0].subject.display);
-          console.log(procr[0].code.text);
-          console.log(procr[0].orderedOn);
-          console.log(procr[0].orderer.display);
-          console.log(procr[0].status);
-          console.log(procr[0].ScheduledDateTime);
-          FHIR.oauth2.ready(onReady, onError);
-          return ret.promise();
+        $.when(pt, procr).done(function(pt, proc) {
+          if (proc.length != 0) {
+            console.log(procr);
+            console.log(procr[0]);
+            console.log(procr[0].subject.display);
+            console.log(procr[0].code.text);
+            console.log(procr[0].orderedOn);
+            console.log(procr[0].orderer.display);
+            console.log(procr[0].status);
+            console.log(procr[0].ScheduledDateTime);
+            FHIR.oauth2.ready(onReady, onError);
+            return ret.promise();
+          }
 
          });
         
