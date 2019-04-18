@@ -23,14 +23,30 @@
                   });
         //gets the diagnostic report data
         var diag = smart.patient.api.fetchAll({type: 'DiagnosticReport'});
+        var procr = smart.patient.api.fetchAll({type: 'ProcedureRequest'});
         
         $.when(pt, diag).fail(onError);
+        
+        $.when(pt, procr).fail(onError);
+
         
         $.when(pt, diag).done(function(pt, diag) {
           console.log(diag);
           console.log(diag[0]);
           console.log(diag[0].code.text);
           console.log(diag[0].effectiveDateTime);
+         });
+        
+        $.when(pt, procr).done(function(pt, diag) {
+          console.log(procr);
+          console.log(procr[0]);
+          console.log(procr[0].subject.display);
+          console.log(procr[0].code.text);
+          console.log(procr[0].orderedOn);
+          console.log(procr[0].orderer.display);
+          console.log(procr[0].status);
+          console.log(procr[0].ScheduledDateTime);
+
          });
         
         $.when(pt, obv).fail(onError);
