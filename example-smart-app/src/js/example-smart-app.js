@@ -24,11 +24,11 @@
                   });
         //gets the diagnostic report data
         var diag = smart.patient.api.fetchAll({type: 'DiagnosticReport'});
-//         var procr = smart.patient.api.fetchAll({type: 'ProcedureRequest'});
+        var procr = smart.patient.api.fetchAll({type: 'ServiceRequest'});
         
         $.when(pt, diag).fail(onError);
         
-//         $.when(pt, procr).fail(onError);
+        $.when(pt, procr).fail(onError);
 
         
         $.when(pt, diag).done(function(pt, diag) {
@@ -41,10 +41,10 @@
           }
          });
         
-//         $.when(pt, procr).done(function(pt, proc) {
-//           if (proc.length != 0) {
-//             console.log(procr);
-//             console.log(procr[0]);
+        $.when(pt, procr).done(function(pt, proc) {
+          if (proc.length != 0) {
+            console.log(procr);
+            console.log(procr[0]);
 //             console.log(procr[0].subject.display);
 //             console.log(procr[0].code.text);
 //             console.log(procr[0].orderedOn);
@@ -52,9 +52,9 @@
 //             console.log(procr[0].status);
 //             console.log(procr[0].ScheduledDateTime);
             
-//           }
+          }
 
-//          });
+         });
         
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
