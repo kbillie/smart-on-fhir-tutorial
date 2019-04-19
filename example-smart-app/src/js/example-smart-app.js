@@ -38,7 +38,6 @@
           if (diag.length != 0) {
             var idn = 1;
             for (i in diag) {
-              console.log(diag[i]);
               var encounterid = diag[i].encounter.id;
               var pname = diag[i].subject.display; 
               var dorder = diag[i].code.text;
