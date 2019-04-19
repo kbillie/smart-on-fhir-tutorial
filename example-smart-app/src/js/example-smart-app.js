@@ -184,21 +184,96 @@
 //   };
   
   
- var tabledata = [
-    {id:1, name:"Oli Bob", age:"12", col:"red", dob:""},
-    {id:2, name:"Mary May", age:"1", col:"blue", dob:"14/05/1982"},
-    {id:3, name:"Christine Lobowski", age:"42", col:"green", dob:"22/05/1982"},
-    {id:4, name:"Brendon Philips", age:"125", col:"orange", dob:"01/08/1980"},
-    {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"},
-    {id:6, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"}
- ];
+//  var tabledata = [
+//     {id:1, name:"Oli Bob", age:"12", col:"red", dob:""},
+//     {id:2, name:"Mary May", age:"1", col:"blue", dob:"14/05/1982"},
+//     {id:3, name:"Christine Lobowski", age:"42", col:"green", dob:"22/05/1982"},
+//     {id:4, name:"Brendon Philips", age:"125", col:"orange", dob:"01/08/1980"},
+//     {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"},
+//     {id:6, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"}
+//  ];
+  
+  var tabledata = [
+  {
+    "id": 1,
+    "name": "PETERS, TIMOTHY",
+    "order": "XR Abdomen AP",
+    "completedDate": "2018-09-24T18:01:00.000Z",
+    "status": "appended",
+    "color": "red"
+  },
+  {
+    "id": 2,
+    "name": "PETERS, TIMOTHY",
+    "order": "General Radiography Report",
+    "completedDate": "2017-08-17T13:02:00.000Z",
+    "status": "entered-in-error",
+    "color": "red"
+  },
+  {
+    "id": 3,
+    "name": "PETERS, TIMOTHY",
+    "order": "RADRPT",
+    "completedDate": "2016-05-04T19:09:37.000Z",
+    "status": "final",
+    "color": "green"
+  },
+  {
+    "id": 4,
+    "name": "PETERS, TIMOTHY",
+    "order": "RADRPT",
+    "completedDate": "2015-09-22T15:57:16.000Z",
+    "status": "partial",
+    "color": "yellow"
+  },
+  {
+    "id": 5,
+    "name": "PETERS, TIMOTHY",
+    "order": "Mammography Report",
+    "completedDate": "2014-10-03T19:02:05.000Z",
+    "status": "final",
+    "color": "green"
+  },
+  {
+    "id": 6,
+    "name": "PETERS, TIMOTHY",
+    "order": "RADRPT",
+    "completedDate": "2014-05-05T21:54:49.000Z",
+    "status": "registered",
+    "color": "yellow"
+  },
+  {
+    "id": 7,
+    "name": "PETERS, TIMOTHY",
+    "order": "RADRPT",
+    "completedDate": "2014-01-03T22:45:05.000Z",
+    "status": "partial",
+    "color": "yellow"
+  },
+  {
+    "id": 8,
+    "name": "PETERS, TIMOTHY",
+    "order": "RADRPT",
+    "completedDate": "2014-01-02T17:13:09.000Z",
+    "status": "entered-in-error",
+    "color": "red"
+  },
+  {
+    "id": 9,
+    "name": "PETERS, TIMOTHY",
+    "order": "RADRPT",
+    "completedDate": "2013-09-12T16:18:04.000Z",
+    "status": "appended",
+    "color": "red"
+  }
+]
   
   console.log(tabledata);
   console.log(diagdata);
   
    var table = new Tabulator("#example-table", {
                 height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-                data: diagdata, //assign data to table
+                data: tabledata, //assign data to table
                 layout:"fitData", //fit columns to width of table (optional)
                 columns:[ //Define Table Columns
                     {title:"Name", field:"name", width:150},
