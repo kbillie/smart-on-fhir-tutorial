@@ -30,14 +30,25 @@
         
         $.when(pt, procr).fail(onError);
 
-        
+        var data = []
         $.when(pt, diag).done(function(pt, diag) {
           if (diag.length != 0) {
             console.log(diag);
-            console.log(diag[0]);
-            console.log(diag[0].code.text);
-            console.log(diag[0].effectiveDateTime);
-            
+            for (i in diag) {
+              console.log(diag[i]);
+              var encounterid = diag[i].encounter.id;
+              var pname = diag[i].subject.display; 
+              var dorder = diag[i].code.text;
+              var completedDateValue = diag[i].effectiveDateTime;
+              var statusValue = diag[i].status
+              var col = "red";
+              if (status == 'final') {
+                col = "green"
+              }
+              var element = { Name: pname, Order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
+              console.log(element);
+              data.push(element);
+            }
           }
          });
         
