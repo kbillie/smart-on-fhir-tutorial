@@ -53,13 +53,12 @@
                 col = "red";
               }
               var element = { Name: pname, Order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
-              console.log(data);
               data.push(element);
             }
           }
          });
         
-        console.log(data);
+
         
         $.when(pt, procr).done(function(pt, proc) {
           if (proc.length != 0) {
@@ -169,19 +168,19 @@
     }
   }
 
-  window.drawVisualization = function(p) {
-    $('#holder').show();
-    $('#loading').hide();
-    $('#fname').html(p.fname);
-    $('#lname').html(p.lname);
-    $('#gender').html(p.gender);
-    $('#birthdate').html(p.birthdate);
-    $('#height').html(p.height);
-    $('#systolicbp').html(p.systolicbp);
-    $('#diastolicbp').html(p.diastolicbp);
-    $('#ldl').html(p.ldl);
-    $('#hdl').html(p.hdl);
-  };
+//   window.drawVisualization = function(p) {
+//     $('#holder').show();
+//     $('#loading').hide();
+//     $('#fname').html(p.fname);
+//     $('#lname').html(p.lname);
+//     $('#gender').html(p.gender);
+//     $('#birthdate').html(p.birthdate);
+//     $('#height').html(p.height);
+//     $('#systolicbp').html(p.systolicbp);
+//     $('#diastolicbp').html(p.diastolicbp);
+//     $('#ldl').html(p.ldl);
+//     $('#hdl').html(p.hdl);
+//   };
   
   
 //  var tabledata = [
@@ -192,7 +191,7 @@
 //     {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"},
 //     {id:6, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"}
 //  ];
-  
+  console.log(data);
   var table = new Tabulator("#example-table", {
     height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
     data: data, //assign data to table
@@ -202,7 +201,7 @@
         {title:"Order", field:"Order", align:"left"},
         {title:"Completed Date", field:"completedDate"},
         {title:"Status", field:"status"},
-        {title:"Color", field:"color",formatter:"color", width:75}
+        {title:"Color", field:"color",formatter:"color", width:75},
     ],
     rowClick:function(e, row){ //trigger an alert message when the row is clicked
         alert("Row " + row.getData().id + " Clicked!!!!");
