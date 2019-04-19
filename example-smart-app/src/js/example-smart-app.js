@@ -6,7 +6,8 @@
       console.log('Loading error', arguments);
       ret.reject();
     }
-
+    
+ var data = [];
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
@@ -30,7 +31,7 @@
         
         $.when(pt, procr).fail(onError);
 
-        var data = []
+        
         $.when(pt, diag).done(function(pt, diag) {
           if (diag.length != 0) {
             console.log(diag);
@@ -42,8 +43,12 @@
               var completedDateValue = diag[i].effectiveDateTime;
               var statusValue = diag[i].status
               var col = "red";
-              if (status == 'final') {
+              if (statusValue == 'final') {
                 col = "green"
+              } else if (statusValue == 'registered' || statusValue == "partial") {
+                col = "yellow";
+              } else {
+                col = "red";
               }
               var element = { Name: pname, Order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
               console.log(element);
@@ -51,6 +56,8 @@
             }
           }
          });
+        
+        console.log(data);
         
         $.when(pt, procr).done(function(pt, proc) {
           if (proc.length != 0) {
@@ -186,13 +193,14 @@
   
   var table = new Tabulator("#example-table", {
     height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    data:tabledata, //assign data to table
+    data: data, //assign data to table
     layout:"fitColumns", //fit columns to width of table (optional)
     columns:[ //Define Table Columns
-        {title:"Name", field:"name", width:150},
-        {title:"Age", field:"age", align:"left", formatter:"progress"},
-        {title:"Favourite Color", field:"col"},
-        {title:"Date Of Birth", field:"dob", sorter:"date", align:"center"},
+        {title:"Name", field:"Name", width:150},
+        {title:"Order", field:"Order", align:"left"},
+        {title:"Completed Date", field:"completedDate"},
+        {title:"Status", field:"status"},
+        {title:"Color", field:"color",formatter:"color", width:75}
     ],
     rowClick:function(e, row){ //trigger an alert message when the row is clicked
         alert("Row " + row.getData().id + " Clicked!!!!");
