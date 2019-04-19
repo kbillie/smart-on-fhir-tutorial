@@ -202,10 +202,10 @@
                 layout:"fitData", //fit columns to width of table (optional)
                 columns:[ //Define Table Columns
                     {title:"Name", field:"name", width:150},
-                    {title:"Order", field:"age", align:"left"},
-                    {title:"Completed Date", field:"dob"},
-                    {title:"Status", field:"col"},
-                    {title:"Color", field:"col",formatter:"color", width:100},
+                    {title:"Order", field:"order", align:"left"},
+                    {title:"Completed Date", field:"completedDate"},
+                    {title:"Status", field:"color"},
+                    {title:"Color", field:"color",formatter:"color", width:100},
                 ],
                 rowClick:function(e, row){ //trigger an alert message when the row is clicked
                     alert("Row " + row.getData().id + " Clicked!!!!");
