@@ -36,6 +36,7 @@
         
         $.when(pt, diag).done(function(pt, diag) {
           if (diag.length != 0) {
+            var idn = 1;
             for (i in diag) {
               console.log(diag[i]);
               var encounterid = diag[i].encounter.id;
@@ -51,8 +52,9 @@
               } else {
                 col = "red";
               }
-              var element = { Name: pname, Order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
+              var element = {id: idn, Name: pname, Order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
               data.push(element);
+              idn = idn + 1;
             }
           }
          });
