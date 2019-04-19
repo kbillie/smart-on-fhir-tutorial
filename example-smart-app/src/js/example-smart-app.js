@@ -55,6 +55,22 @@
               diagdata.push(element);
               idn = idn + 1;
             }
+            var table = new Tabulator("#example-table", {
+                height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+                data: diagdata, //assign data to table
+                layout:"fitData", //fit columns to width of table (optional)
+                columns:[ //Define Table Columns
+                    {title:"Name", field:"name", width:150},
+                    {title:"Order", field:"order", align:"left"},
+                    {title:"Completed Date", field:"completedDate"},
+                    {title:"Status", field:"color"},
+                    {title:"Color", field:"color",formatter:"color", width:100},
+                ],
+                rowClick:function(e, row){ //trigger an alert message when the row is clicked
+                    alert("Row " + row.getData().id + " Clicked!!!!");
+                },
+            });
+            table.replaceData(diagdata);
            
           }
          });
@@ -271,21 +287,7 @@
   console.log(tabledata);
   console.log(diagdata);
   
-   var table = new Tabulator("#example-table", {
-                height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-                data: tabledata, //assign data to table
-                layout:"fitData", //fit columns to width of table (optional)
-                columns:[ //Define Table Columns
-                    {title:"Name", field:"name", width:150},
-                    {title:"Order", field:"order", align:"left"},
-                    {title:"Completed Date", field:"completedDate"},
-                    {title:"Status", field:"color"},
-                    {title:"Color", field:"color",formatter:"color", width:100},
-                ],
-                rowClick:function(e, row){ //trigger an alert message when the row is clicked
-                    alert("Row " + row.getData().id + " Clicked!!!!");
-                },
-            });
+   
   
 
 
