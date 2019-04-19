@@ -199,13 +199,13 @@
    var table = new Tabulator("#example-table", {
                 height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
                 data: tabledata, //assign data to table
-                layout:"fitColumns", //fit columns to width of table (optional)
+                layout:"fitData", //fit columns to width of table (optional)
                 columns:[ //Define Table Columns
                     {title:"Name", field:"name", width:150},
                     {title:"Order", field:"age", align:"left"},
                     {title:"Completed Date", field:"dob"},
                     {title:"Status", field:"col"},
-                    {title:"Color", field:"col",formatter:"color", width:75},
+                    {title:"Color", field:"col",formatter:"color", width:100},
                 ],
                 rowClick:function(e, row){ //trigger an alert message when the row is clicked
                     alert("Row " + row.getData().id + " Clicked!!!!");
