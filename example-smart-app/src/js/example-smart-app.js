@@ -36,7 +36,6 @@
         
         $.when(pt, diag).done(function(pt, diag) {
           if (diag.length != 0) {
-            console.log(diag);
             for (i in diag) {
               console.log(diag[i]);
               var encounterid = diag[i].encounter.id;
