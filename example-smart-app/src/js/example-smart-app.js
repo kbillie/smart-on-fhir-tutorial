@@ -24,7 +24,7 @@
                   });
         //gets the diagnostic report data
         var diag = smart.patient.api.fetchAll({type: 'DiagnosticReport'});
-        var procr = smart.patient.api.fetchAll({type: 'ServiceRequest'});
+        var procr = smart.patient.api.fetchAll({type: 'ProcedureRequest'});
         
         $.when(pt, diag).fail(onError);
         
