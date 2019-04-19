@@ -1,6 +1,6 @@
 
 (function(window){
-  var data = [];
+  var diagdata = [];
   window.extractData = function() {
     var ret = $.Deferred();
 
@@ -51,8 +51,8 @@
               } else {
                 col = "red";
               }
-              var element = {id: idn, Name: pname, Order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
-              data.push(element);
+              var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
+              diagdata.push(element);
               idn = idn + 1;
             }
            
@@ -194,11 +194,11 @@
  ];
   
   console.log(tabledata);
-  console.log(data);
+  console.log(diagdata);
   
    var table = new Tabulator("#example-table", {
                 height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-                data: tabledata, //assign data to table
+                data: diagdata, //assign data to table
                 layout:"fitData", //fit columns to width of table (optional)
                 columns:[ //Define Table Columns
                     {title:"Name", field:"name", width:150},
