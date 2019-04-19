@@ -95,7 +95,7 @@ $("#filter-clear").click(function(){
                     {title:"Name", field:"name", width:150},
                     {title:"Order", field:"order", align:"left"},
                     {title:"Completed Date", field:"completedDate"},
-                    {title:"Status", field:"color"},
+                    {title:"Status", field:"status"},
                     {title:"Color", field:"color",formatter:"color", width:100},
                 ],
                 rowClick:function(e, row){ //trigger an alert message when the row is clicked
