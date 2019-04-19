@@ -55,6 +55,21 @@
               data.push(element);
               idn = idn + 1;
             }
+            var table = new Tabulator("#example-table", {
+                height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+                data: data, //assign data to table
+                layout:"fitColumns", //fit columns to width of table (optional)
+                columns:[ //Define Table Columns
+                    {title:"Name", field:"Name", width:150},
+                    {title:"Order", field:"Order", align:"left"},
+                    {title:"Completed Date", field:"completedDate"},
+                    {title:"Status", field:"status"},
+                    {title:"Color", field:"color",formatter:"color", width:75},
+                ],
+                rowClick:function(e, row){ //trigger an alert message when the row is clicked
+                    alert("Row " + row.getData().id + " Clicked!!!!");
+                },
+            });
           }
          });
         
@@ -194,21 +209,7 @@
   
   console.log(tabledata);
   console.log(data);
-  var table = new Tabulator("#example-table", {
-    height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-    data: data, //assign data to table
-    layout:"fitColumns", //fit columns to width of table (optional)
-    columns:[ //Define Table Columns
-        {title:"Name", field:"Name", width:150},
-        {title:"Order", field:"Order", align:"left"},
-        {title:"Completed Date", field:"completedDate"},
-        {title:"Status", field:"status"},
-        {title:"Color", field:"color",formatter:"color", width:75},
-    ],
-    rowClick:function(e, row){ //trigger an alert message when the row is clicked
-        alert("Row " + row.getData().id + " Clicked!!!!");
-    },
-});
+  
 
 
 })(window);
