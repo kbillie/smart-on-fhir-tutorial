@@ -11,6 +11,38 @@
       <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
     -->
   </head>
+  <div class="table-controls">
+        <span>
+          <label>Field: </label>
+          <select id="filter-field">
+              <option></option>
+              <option value="Name">Name</option>
+              <option value="Order">Order</option>
+              <option value="Completed Date">Completed Date</option>
+              <option value="Status">Status</option>
+              <option value="Color">Favourite Color</option>
+              
+              <option value="function">Drives &amp;Rating &lt; 3</option>
+          </select>
+        </span>
+
+        <span>
+          <label>Type: </label>
+          <select id="filter-type">
+              <option value="=">=</option>
+              <option value="<">&lt;</option>
+              <option value="<=">&lt;=</option>
+              <option value=">">&gt;</option>
+              <option value=">=">&gt;=</option>
+              <option value="!=">!=</option>
+              <option value="like">like</option>
+          </select>
+        </span>
+
+          <span><label>Value: </label> <input id="filter-value" type="text" placeholder="value to filter"></span>
+
+          <button id="filter-clear">Clear Filter</button>
+    </div>
   <div id="example-table"></div>
   <body>
     <div id='errors'>
