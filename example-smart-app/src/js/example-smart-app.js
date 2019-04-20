@@ -57,12 +57,13 @@
               var doc;
               var enc = smart.api.read({type: "Encounter", id: parseInt(encounterid)});
               $.when(pt, enc).fail(onError);
-//               $.when(pt, enc).done(function(pt, enc) {
-                loc = enc.data.location[0].location.display;
-                doc = enc.data.participant[0].individual.display;
-                console.log(loc);
-                console.log(doc);
-//               });
+              loc, doc =  $.when(pt, enc).done(function(pt, enc) {
+                var locv = enc.data.location[0].location.display;
+                var docv = enc.data.participant[0].individual.display;
+                return locv, docv
+               });
+              
+              
               var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
               diagdata.push(element);
               console.log(element);
@@ -70,37 +71,37 @@
               idn = idn + 1;
             }
             function customFilter(data){
-    return diagdata;
-}
+                return diagdata;
+            }
 
-//Trigger setFilter function with correct parameters
-function updateFilter(){
+            //Trigger setFilter function with correct parameters
+            function updateFilter(){
 
-    var filter = $("#filter-field").val() == "function" ? customFilter : $("#filter-field").val();
+                var filter = $("#filter-field").val() == "function" ? customFilter : $("#filter-field").val();
 
-    if($("#filter-field").val() == "function" ){
-        $("#filter-type").prop("disabled", true);
-        $("#filter-value").prop("disabled", true);
-    }else{
-        $("#filter-type").prop("disabled", false);
-        $("#filter-value").prop("disabled", false);
-    }
+                if($("#filter-field").val() == "function" ){
+                    $("#filter-type").prop("disabled", true);
+                    $("#filter-value").prop("disabled", true);
+                }else{
+                    $("#filter-type").prop("disabled", false);
+                    $("#filter-value").prop("disabled", false);
+                }
 
-    table.setFilter(filter, $("#filter-type").val(), $("#filter-value").val());
-}
+                table.setFilter(filter, $("#filter-type").val(), $("#filter-value").val());
+            }
 
-//Update filters on value change
-$("#filter-field, #filter-type").change(updateFilter);
-$("#filter-value").keyup(updateFilter);
+            //Update filters on value change
+            $("#filter-field, #filter-type").change(updateFilter);
+            $("#filter-value").keyup(updateFilter);
 
-//Clear filters on "Clear Filters" button click
-$("#filter-clear").click(function(){
-    $("#filter-field").val("");
-    $("#filter-type").val("=");
-    $("#filter-value").val("");
+            //Clear filters on "Clear Filters" button click
+            $("#filter-clear").click(function(){
+                $("#filter-field").val("");
+                $("#filter-type").val("=");
+                $("#filter-value").val("");
 
-    table.clearFilter();
-});
+                table.clearFilter();
+            });
             var table = new Tabulator("#example-table", {
                 height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
                 data: diagdata, //assign data to table
@@ -120,9 +121,17 @@ $("#filter-clear").click(function(){
             });
             table.replaceData(diagdata);
            
-          }
+            }
          });
         
+        
+//               $.when(pt, enc).fail(onError);
+//               $.when(pt, enc).done(function(pt, enc) {
+//                 loc = enc.data.location[0].location.display;
+//                 doc = enc.data.participant[0].individual.display;
+//                 console.log(loc);
+//                 console.log(doc);
+//                });
 
         
 //         $.when(pt, procr).done(function(pt, proc) {
