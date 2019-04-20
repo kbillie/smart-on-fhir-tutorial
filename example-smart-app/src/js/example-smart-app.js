@@ -39,6 +39,7 @@
             var idn = 1;
             for (i in diag) {
               var encounterid = diag[i].encounter.id;
+              console.log(encounterid);
               var pname = diag[i].subject.display; 
               var dorder = diag[i].code.text;
               var completedDateValue = diag[i].effectiveDateTime;
