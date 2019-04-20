@@ -60,9 +60,10 @@
               $.when(pt, enc).done(function(pt, enc) {
                 loc = enc.data.location[0].location.display;
                 doc = enc.data.participant[0].individual.display;
+                var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
+                diagdata.push(element);
               });
-              var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
-              diagdata.push(element);
+              
               idn = idn + 1;
             }
             function customFilter(data){
