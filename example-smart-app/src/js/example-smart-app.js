@@ -40,9 +40,7 @@
             for (i in diag) {
               console.log(diag[i]);
               var encounterid = diag[i].encounter.reference;
-              console.log(encounterid);
               encounterid = encounterid.replace("Encounter/","");
-              console.log(encounterid);
               var pname = diag[i].subject.display; 
               var dorder = diag[i].code.text;
               var completedDateValue = diag[i].effectiveDateTime;
@@ -60,7 +58,8 @@
               var doc;
               $.when(pt, enc).fail(onError);
               $.when(pt, enc).done(function(pt, enc) {
-                console.log(enc);
+                console.log(enc.data.location[0].location.display);
+                console.log(enc.data.participant[0].individual.display);
               });
               var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
               diagdata.push(element);
