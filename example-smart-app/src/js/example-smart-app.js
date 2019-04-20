@@ -51,7 +51,7 @@
               } else {
                 col = "red";
               }
-              var enc = smart.api.read({type: "Encounter", id: encounterid});
+              var enc = smart.api.read({type: "Encounter", id: parseInt(encounterid)});
               var location;
               var doc;
               $.when(pt, enc).fail(onError);
