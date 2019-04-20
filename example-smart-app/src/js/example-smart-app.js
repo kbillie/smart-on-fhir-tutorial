@@ -38,6 +38,7 @@
           if (diag.length != 0) {
             var idn = 1;
             for (i in diag) {
+              console.log(diag[i]);
               var encounterid = diag[i].encounter.id;
               console.log(encounterid);
               var pname = diag[i].subject.display; 
@@ -117,10 +118,10 @@ $("#filter-clear").click(function(){
         
 
         
-        $.when(pt, procr).done(function(pt, proc) {
-          if (proc.length != 0) {
-            console.log(procr);
-            console.log(procr[0]);
+//         $.when(pt, procr).done(function(pt, proc) {
+//           if (proc.length != 0) {
+//             console.log(procr);
+//             console.log(procr[0]);
 //             console.log(procr[0].subject.display);
 //             console.log(procr[0].code.text);
 //             console.log(procr[0].orderedOn);
@@ -128,9 +129,9 @@ $("#filter-clear").click(function(){
 //             console.log(procr[0].status);
 //             console.log(procr[0].ScheduledDateTime);
             
-          }
+//           }
 
-         });
+//          });
         
         $.when(pt, obv).fail(onError);
         $.when(pt, obv).done(function(patient, obv) {
