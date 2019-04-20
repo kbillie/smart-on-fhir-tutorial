@@ -38,7 +38,7 @@
           if (diag.length != 0) {
             var idn = 1;
             for (i in diag) {
-              console.log(diag[i]);
+              //console.log(diag[i]);
               var encounterid = diag[i].encounter.reference;
               encounterid = encounterid.replace("Encounter/","");
               var pname = diag[i].subject.display; 
@@ -65,6 +65,7 @@
               });
               var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
               diagdata.push(element);
+              console.log(element);
               
               idn = idn + 1;
             }
