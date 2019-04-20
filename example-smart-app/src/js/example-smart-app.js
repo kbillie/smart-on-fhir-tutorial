@@ -54,19 +54,19 @@
                 col = "red";
               }
               var enc = smart.api.read({type: "Encounter", id: parseInt(encounterid)});
-              var location;
+              var loc;
               var doc;
               $.when(pt, enc).fail(onError);
               $.when(pt, enc).done(function(pt, enc) {
-                console.log(enc.data.location[0].location.display);
-                console.log(enc.data.participant[0].individual.display);
+                loc = enc.data.location[0].location.display;
+                doc = enc.data.participant[0].individual.display;
               });
-              var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
+              var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
               diagdata.push(element);
               idn = idn + 1;
             }
             function customFilter(data){
-    return tabledata;
+    return diagdata;
 }
 
 //Trigger setFilter function with correct parameters
@@ -102,10 +102,12 @@ $("#filter-clear").click(function(){
                 data: diagdata, //assign data to table
                 layout:"fitData", //fit columns to width of table (optional)
                 columns:[ //Define Table Columns
-                    {title:"Name", field:"name", width:150},
+                    {title:"Name", field:"name"},
                     {title:"Order", field:"order", align:"left"},
                     {title:"Completed Date", field:"completedDate"},
                     {title:"Status", field:"status"},
+                    {title:"Doctor", field:"doctor",},
+                    {title:"Location", field:"location"},
                     {title:"Color", field:"color",formatter:"color", width:100},
                 ],
                 rowClick:function(e, row){ //trigger an alert message when the row is clicked
