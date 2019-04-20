@@ -51,6 +51,13 @@
               } else {
                 col = "red";
               }
+              var enc = smart.api.read({type: "Encounter", id: encounterid});
+              var location;
+              var doc;
+              $.when(pt, enc).fail(onError);
+              $.when(pt, enc).done(function(pt, enc) {
+                console.log(enc);
+              });
               var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col};
               diagdata.push(element);
               idn = idn + 1;
