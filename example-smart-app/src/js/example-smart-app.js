@@ -57,10 +57,10 @@
               var doc;
               var enc = smart.api.read({type: "Encounter", id: parseInt(encounterid)});
               $.when(pt, enc).fail(onError);
-              loc, doc =  $.when(pt, enc).done(function(pt, enc) {
+              loc =  $.when(pt, enc).done(function(pt, enc) {
                 var locv = enc.data.location[0].location.display;
                 var docv = enc.data.participant[0].individual.display;
-                return locv, docv
+                return locv
                });
               
               
