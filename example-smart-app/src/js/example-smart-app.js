@@ -57,12 +57,12 @@
               var doc;
               var enc = smart.api.read({type: "Encounter", id: parseInt(encounterid)});
               $.when(pt, enc).fail(onError);
-              $.when(pt, enc).done(function(pt, enc) {
+//               $.when(pt, enc).done(function(pt, enc) {
                 loc = enc.data.location[0].location.display;
                 doc = enc.data.participant[0].individual.display;
                 console.log(loc);
                 console.log(doc);
-              });
+//               });
               var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
               diagdata.push(element);
               console.log(element);
