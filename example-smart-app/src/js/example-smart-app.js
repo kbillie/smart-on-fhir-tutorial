@@ -33,7 +33,6 @@
         
         $.when(pt, procr).fail(onError);
         
-        console.log(diagdata);
         $.when(pt, diag).done(function(pt, diag) {
           if (diag.length != 0) {
             var idn = 1;
@@ -114,6 +113,7 @@
             });
             
             for(i in diagdata) {
+              console.log(i);
               var enc = smart.api.read({type: "Encounter", id: parseInt(i.eid)});
               $.when(pt, enc).fail(onError);
               $.when(pt, enc).done(function(pt, enc) {
