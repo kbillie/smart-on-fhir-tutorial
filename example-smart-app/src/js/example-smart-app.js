@@ -102,8 +102,8 @@
                     {title:"Order", field:"order", align:"left"},
                     {title:"Completed Date", field:"completedDate"},
                     {title:"Status", field:"status"},
-                    {title:"Doctor", field:"doctor",},
-                    {title:"Location", field:"location"},
+                    {title:"Doctor", field:"doctor", width:400},
+                    {title:"Location", field:"location", width:600},
                     {title:"Color", field:"color",formatter:"color", width:200},
                 ],
                 rowClick:function(e, row){ //trigger an alert message when the row is clicked
