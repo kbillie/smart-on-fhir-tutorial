@@ -115,12 +115,10 @@
               var enc = smart.api.read({type: "Encounter", id: parseInt(diagdata[i].eid)});
               $.when(pt, enc).fail(onError);
               $.when(pt, enc).done(function(pt, enc) {
-                console.log(i);
+                console.log(enc);
                 diagdata[i].location = enc.data.location[0].location.display;
                 diagdata[i].doctor = enc.data.participant[0].individual.display;
-                console.log(diagdata[i].location);
-                console.log( diagdata[i].doctor);
-                console.log(diagdata)
+                
                 table.replaceData(diagdata);
 
                });
