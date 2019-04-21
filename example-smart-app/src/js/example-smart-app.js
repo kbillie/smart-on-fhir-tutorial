@@ -96,7 +96,7 @@
             var table = new Tabulator("#example-table", {
                 height:200, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
                 data: diagdata, //assign data to table
-                layout:"fitDataFill", //fit columns to width of table (optional)
+                layout:"fitData", //fit columns to width of table (optional)
                 columns:[ //Define Table Columns
                     {title:"Name", field:"name"},
                     {title:"Order", field:"order", align:"left"},
