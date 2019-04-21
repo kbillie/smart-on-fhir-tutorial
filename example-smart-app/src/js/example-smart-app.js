@@ -55,16 +55,9 @@
               }
               var loc;
               var doc;
-              var enc = smart.api.read({type: "Encounter", id: parseInt(encounterid)});
-              $.when(pt, enc).fail(onError);
-              loc =  $.when(pt, enc).done(function(pt, enc) {
-                var locv = enc.data.location[0].location.display;
-                var docv = enc.data.participant[0].individual.display;
-                return locv
-               });
               
               
-              var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc};
+              var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc, eid:encounterid};
               diagdata.push(element);
               console.log(element);
               
@@ -123,7 +116,6 @@
            
             }
          });
-        console.log(diagdata);
         
 //               $.when(pt, enc).fail(onError);
 //               $.when(pt, enc).done(function(pt, enc) {
@@ -194,6 +186,18 @@
         onError();
       }
     }
+    for(i in diagdata) {
+      var enc = smart.api.read({type: "Encounter", id: parseInt(i.eid)});
+      $.when(pt, enc).fail(onError);
+      $.when(pt, enc).done(function(pt, enc) {
+        i.location = enc.data.location[0].location.display;
+        i.doctor = enc.data.participant[0].individual.display;
+        console.log(i.location);
+        console.log(i.doctor);
+       });
+    }
+    table.replace(diagdata);
+
 
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
@@ -243,7 +247,6 @@
   }
     
 
-console.log(diagdata);
   
    
   
