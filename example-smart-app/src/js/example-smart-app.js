@@ -58,7 +58,6 @@
               
               var element = {id: idn, name: pname, order: dorder, completedDate: completedDateValue, status: statusValue, color: col, doctor: doc, location: loc, eid:encounterid};
               diagdata.push(element);
-              console.log(element);
               
               idn = idn + 1;
             }
