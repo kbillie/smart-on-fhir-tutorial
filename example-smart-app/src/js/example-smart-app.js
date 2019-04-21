@@ -112,6 +112,17 @@
                     alert("Row " + row.getData().id + " Clicked!!!!");
                 },
             });
+            
+            for(i in diagdata) {
+              var enc = smart.api.read({type: "Encounter", id: parseInt(i.eid)});
+              $.when(pt, enc).fail(onError);
+              $.when(pt, enc).done(function(pt, enc) {
+                i.location = enc.data.location[0].location.display;
+                i.doctor = enc.data.participant[0].individual.display;
+                console.log(i.location);
+                console.log(i.doctor);
+               });
+            }
             table.replaceData(diagdata);
            
             }
@@ -186,17 +197,7 @@
         onError();
       }
     }
-    for(i in diagdata) {
-      var enc = smart.api.read({type: "Encounter", id: parseInt(i.eid)});
-      $.when(pt, enc).fail(onError);
-      $.when(pt, enc).done(function(pt, enc) {
-        i.location = enc.data.location[0].location.display;
-        i.doctor = enc.data.participant[0].individual.display;
-        console.log(i.location);
-        console.log(i.doctor);
-       });
-    }
-    table.replace(diagdata);
+    
 
 
     FHIR.oauth2.ready(onReady, onError);
