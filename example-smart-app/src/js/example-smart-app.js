@@ -121,9 +121,11 @@
                 diagdata[i].doctor = enc.data.participant[0].individual.display;
                 console.log(diagdata[i].location);
                 console.log(diagdata[i].doctor);
+                table.replaceData(diagdata);
+
                });
             }
-            table.replaceData(diagdata);
+            console.log(diagdata);
            
             }
          });
