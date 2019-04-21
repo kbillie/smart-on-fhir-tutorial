@@ -113,14 +113,14 @@
             });
             
             for(i in diagdata) {
-              console.log(i);
-              var enc = smart.api.read({type: "Encounter", id: parseInt(i.eid)});
+              console.log(diagdata[i]);
+              var enc = smart.api.read({type: "Encounter", id: parseInt(diagdata[i].eid)});
               $.when(pt, enc).fail(onError);
               $.when(pt, enc).done(function(pt, enc) {
-                i.location = enc.data.location[0].location.display;
-                i.doctor = enc.data.participant[0].individual.display;
-                console.log(i.location);
-                console.log(i.doctor);
+                diagdata[i].location = enc.data.location[0].location.display;
+                diagdata[i].doctor = enc.data.participant[0].individual.display;
+                console.log(diagdata[i].location);
+                console.log(diagdata[i].doctor);
                });
             }
             table.replaceData(diagdata);
