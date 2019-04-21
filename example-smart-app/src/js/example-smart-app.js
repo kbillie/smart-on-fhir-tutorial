@@ -122,6 +122,7 @@
                     diagdata[j].location = enc.data.location[0].location.display;
                     diagdata[j].doctor = enc.data.participant[0].individual.display;
                   }
+                }
                 
                 
                 table.replaceData(diagdata);
