@@ -116,13 +116,20 @@
               $.when(pt, enc).fail(onError);
               $.when(pt, enc).done(function(pt, enc) {
                 console.log(enc);
-                diagdata[i].location = enc.data.location[0].location.display;
-                diagdata[i].doctor = enc.data.participant[0].individual.display;
+                var matchedid = enc.config.id;
+                for (j in diagdata) {
+                  if (diagdata[j].eid == matchedid) {
+                    diagdata[j].location = enc.data.location[0].location.display;
+                    diagdata[j].doctor = enc.data.participant[0].individual.display;
+                  }
+                
                 
                 table.replaceData(diagdata);
 
                });
             }
+            //table.replaceData(diagdata);
+
             console.log(diagdata);
            
             }
